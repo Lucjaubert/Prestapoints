@@ -1,0 +1,31 @@
+<div class="container mt-10">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form class="search-bar p-0 border-secondary d-flex" (ngSubmit)="searchForm.valid && onSubmit()"
+        [formGroup]="searchForm" #searchF="ngForm">
+        <input name="inputSearchBar" class="search-input rounded-left mx-3" type="text"
+          placeholder="Rechercher par lieu, mot(s) clé(s), etc..." maxlength="255" name="search"
+          formControlName="search">
+        <span class="material-symbols-outlined search-icon d-md-none presta-mr-3">
+          search
+        </span>
+        <button class="discover-button rounded-right rounded-left me-3 border-0 d-none d-md-block" type="submit">
+          <span class="mx-5">Découvrir</span>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-5 text-center presta-ml-20 presta-mb-7">
+      <ng-container *ngIf="searchForm.controls?.['search']?.errors && searchF.submitted">
+        <div *ngIf="searchForm.controls?.['search']?.errors?.['maxlength']" class="m-1 p-0 fs-small text-danger">
+          La longueur maximale est de 255 caractères
+        </div>
+      </ng-container>
+
+      <div *ngIf="noWorkshopFound" class="m-1 p-0 fs-small text-danger">
+        Nous n'avons pas trouvé d'atelier lié à votre recherche.
+      </div>
+    </div>
+  </div>
+</div>

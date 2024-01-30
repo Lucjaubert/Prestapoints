@@ -1,0 +1,65 @@
+<div class="card-details-mini p-5 mt-lg-12 mx-lg-12 mx-md-8 my-md-8 mx-sm-5 my-sm-5 position-relative shadow mx-lg-none mx-md-none text-center">
+
+  <!--main container-->
+  <div class="main-container container" id="main-container">
+
+    <!-- Content -->
+    <div class="row">
+
+      <!-- Post Content -->
+      <div class="col-12 block-content">
+
+        <!--content box-->
+        <div class="content-box">
+
+          <!-- standard post -->
+          <article class="entry">
+
+            <!--entry card-details-mini-->
+            <div class="col-12 card-details-mini-header text-center text-primary">
+
+              <p class="col-12 mini-card-description presta-text-fw-xx-bold presta-mt-5 presta-mb-0">
+                Rencontrez {{ prestation?.user?.firstname }} 
+              </p>
+              <p class="col-12 mini-card-description presta-text-fw-xx-bold presta-mb-5">
+                pour ce nouvel atelier
+              </p>
+
+              <p class="presta-text-fs-40 presta-text-fw-medium mb-0">{{ prestation?.duration | date:'h'}} h</p>
+
+              <p class="presta-text-fw-medium mt-0">d'atelier</p>
+
+
+              <p class=" presta-text-fw-medium presta-text-fs-60">+</p>
+
+              <p class=" presta-text-fw-medium text-primary">découverte d’un savoir-faire</p>
+
+              <p class=" presta-text-fw-medium presta-text-fs-60">=</p>
+
+              <p class=" presta-text-fw-medium presta-text-quinary points-workshop mb-0">
+                {{ prestation?.addPoint }} Pts/pers
+              </p>
+              <p class="presta-text-fw-medium mt-0">
+                à gagner en participant à l’atelier
+              </p>
+
+              <p class="presta-text-fw-medium presta-mb-7 presta-mt-7">Ces points généreront un code promo à dépenser chez nos partenaires</p>  
+              
+              <!-- button reserve-->
+              <button data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn presta-bg-quinary btn-block presta-mb-7 shadow" type="submit">Je réserve</button>
+              <!-- end button -->
+
+            </div> 
+            <!-- end card-details-mini -->
+
+          </article> <!-- end standard post -->
+
+        </div> <!-- end content box -->
+
+      </div> <!-- end post content -->
+
+    </div> <!-- end content -->
+
+  </div> <!-- end main container -->
+
+</div>

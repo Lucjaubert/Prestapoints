@@ -1,0 +1,49 @@
+@import "/src/styles/variables.scss";
+
+.custom-card {
+
+    margin: 20px;
+    @media (max-width: 767px) {
+      width: 18rem;
+      height: auto;
+      cursor: pointer;
+    }
+  
+    @media (min-width: 768px) {
+      width: 18rem;
+      height: 30rem;
+      cursor: pointer;
+      margin: 20px;
+    }
+  
+    .card-body {
+      @media (max-width: 767px) {
+        width: 18rem;
+        height: auto;
+        cursor: pointer;
+      }
+  
+      @media (min-width: 768px) {
+        width: 18rem;
+        height: 18rem;
+        cursor: pointer;
+      }
+    }
+  
+    .image-container {
+      width: 100%;
+      padding-bottom: 75%;
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  

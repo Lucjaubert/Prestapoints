@@ -1,0 +1,132 @@
+<div class="card-details-maxi p-5 my-12 mx-lg-10 mx-md-8 mx-sm-5 position-relative shadow">
+  <!-- main container -->
+  <div class="main-container container" id="main-container">
+    <!-- Content -->
+    <div class="row">
+      <!-- Post Content -->
+      <div class="col-12 block-content">
+        <!-- content box -->
+        <div class="content-box">
+          <!-- standard post -->
+          <article class="entry">
+            <!-- entry header -->
+            <div class="card-details-header text-primary">
+              <div class="bold list-category text-mat-labe">
+                <a>Prestapoints / {{ prestation?.type?.category?.name }} / {{ prestation?.type?.name }}</a>
+              </div>
+              <h3 class="entry-title presta-mt-5">
+                {{ prestation?.title }}
+              </h3>
+              <div class="entry__meta-location d-flex justify-content-start presta-mt-5">
+                <i class="bi bi-geo-alt presta-mr-3"></i>
+                <h5 class="presta-text-quinary presta-text-fw-medium presta-ml-3">{{ prestation?.location?.city }}</h5>
+                <i class="bi bi-stopwatch presta-ml-15"></i>
+                <h5 class="presta-ml-3 presta-text-fw-medium">{{ prestation?.duration | date:'h'}} h</h5>
+              </div>
+              <div class="little-description presta-my-4 presta-pt-5 presta-text-fw-bold border-top border-grey-text-light">
+                <p>{{ prestation?.littleDescription }}</p>
+              </div>
+            </div>
+
+            <!-- Video -->
+            <div class="video-playlist text-primary">
+              <div class="video-playlist_content">
+                <ng-container *ngIf="prestation">
+                  <ng-container *ngIf="prestation.videoLink">
+                    <iframe class="embed-responsive-item col-lg-12 col-md-8 col-sm-6" [src]="(prestation.videoLink | safeUrl) || ''" frameborder="0" style="width: 100%; min-height: 300px; height: auto;" allowfullscreen></iframe>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+            <!-- end Video -->
+
+            <!-- entry article wrap -->
+            <div class="entry__article-wrap presta-mt-5 text-primary">
+              <!-- end entry article -->
+              <div class="entry__article mb-5">
+                <div class="article-content">
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">Déroulement de l'atelier</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <p>{{ prestation?.description }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">Informations pratiques</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <p>{{ prestation?.practicalInformation }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">Langues de l'atelier</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <p>{{ prestation?.language }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">En savoir plus sur {{ prestation?.user?.firstname }}</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <p>{{ prestation?.personalInfos }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">Lieu de l'atelier</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <p>{{ prestation?.location?.addressInformation}}</p>
+                    </div>
+                  </div>
+
+                  <div class="row presta-mt-7 border-top border-grey-text-light">
+                    <div class="col-md-5 align-items-start presta-my-5">
+                      <h5 class="workshop-heading">Commentaires</h5>
+                    </div>
+                    <div class="col-md-7 align-self-start presta-my-5">
+                      <div class="comments">
+                        <div class="comment" *ngFor="let comment of prestation?.registrations">
+                          <div class="row">
+                            <p class="comment-text">{{ comment.user?.firstname }}</p>
+                            <div class="col">
+                              <p class="comment-date presta-text-fw-bold my-0">{{ comment.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+                            </div>
+                            <div class="col">
+                              <p class="comment-date presta-text-fw-bold my-0">
+                                {{ comment.evaluation }} <i class="fa fa-star text-warning"></i>
+                              </p>
+                            </div>
+                            <p class="comment-text">{{ comment.comment }}</p>
+                          </div>                                                                             
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+              <!-- end entry article -->
+            </div>
+            <!-- end entry article wrap -->
+          </article>
+          <!-- end standard post -->
+        </div>
+        <!-- end content box -->
+      </div>
+      <!-- end post content -->
+    </div>
+    <!-- end content -->
+  </div>
+  <!-- end main container -->
+</div>

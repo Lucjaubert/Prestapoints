@@ -1,0 +1,54 @@
+<div id="swiperCustomDesktop" class="carousel slide d-none d-md-block">
+  <div class="carousel-inner">
+    <ng-container *ngFor="let prestationApi of prestationsApi; let i = index">
+      <div class="carousel-item {{ i === currentIndex ? 'active' : '' }}">
+        <div class="row justify-content-center position-relative">
+          <div class="col-12 col-md-6 col-lg-2 d-flex justify-content-center card_hover"
+            *ngFor="let prestationApi of prestationsApi?.slice(i, i + 4)" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+            <app-card [prestation]="prestationApi"></app-card>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <button *ngIf="prestationsApi && prestationsApi.length > 1" class="carousel-control-prev position-absolute top-50 start-0 translate-middle p-0 h-25"
+    type="button" data-bs-target="#swiperCustomDesktop" (click)="prev()">
+    <span class="material-symbols-outlined">
+      arrow_back_ios
+    </span>
+  </button>
+
+  <button *ngIf="prestationsApi && prestationsApi.length > 1" class="carousel-control-next position-absolute top-50 start-100 translate-middle p-0 h-25"
+    type="button" data-bs-target="#swiperCustomDesktop" (click)="next()">
+    <span class="material-symbols-outlined">
+      arrow_forward_ios
+    </span>
+  </button>
+</div>
+
+<div id="swiperCustomMobile" class="carousel slide d-block d-md-none">
+  <div class="carousel-inner">
+    <ng-container *ngFor="let prestationApi of prestationsApi; let i = index">
+      <div class="carousel-item {{ i === currentIndex ? 'active' : '' }}">
+        <div class="d-flex justify-content-center position-relative">
+          <app-card [prestation]="prestationApi"></app-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <button *ngIf="prestationsApi && prestationsApi.length > 1" class="carousel-control-prev position-absolute top-50 start-0 translate-middle p-0 h-25"
+    type="button" data-bs-target="#swiperCustomDesktop" (click)="prev()">
+    <span class="material-symbols-outlined">
+      arrow_back_ios
+    </span>
+  </button>
+
+  <button *ngIf="prestationsApi && prestationsApi.length > 1" class="carousel-control-next position-absolute top-50 start-100 translate-middle p-0 h-25"
+    type="button" data-bs-target="#swiperCustomDesktop" (click)="next()">
+    <span class="material-symbols-outlined">
+      arrow_forward_ios
+    </span>
+  </button>
+</div>

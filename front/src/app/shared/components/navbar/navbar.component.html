@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg bg-grey {{ isVisible ? '' : 'd-none'}}">
+  <div class="container">
+    <div class="d-flex flex-column text-center text-lg-end me-5 ">
+      <a class="text-decoration-none text-primary fw-bolder fs-4 fs-sm-3 fs-md-2 fs-lg-1" href="/">
+        <div class="d-flex align-items-center">
+          <span class="pe-2">P</span>
+          <span class="px-2">R</span>
+          <span class="px-2">E</span>
+          <span class="px-2">S</span>
+          <span class="px-2">T</span>
+          <span class="px-2">A</span>
+          <span class="text-decoration-none text-secondary fw-light h1 mb-0 ">|</span>
+          <span class="px-2">P</span>
+          <span class="px-2">O</span>
+          <span class="px-2">I</span>
+          <span class="px-2">N</span>
+          <span class="px-2">T</span>
+          <span class="ps-2">S</span>
+        </div>
+      </a>
+      <a class="text-decoration-none text-secondary fw-normal fs-6 " href="/">Services entre particuliers</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 border-bottom w-100 justify-content-between px-4 align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active text-primary fw-bolder fs-6" aria-current="page" (click)="showProposalModal($event)" href="#">Nos partenaires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-primary fw-bolder fs-6" aria-current="page" (click)="showProposalModal($event)" href="#">Convertir mes points</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-primary fw-bolder fs-6" aria-current="page" href="./prestation/formulaire">Proposer un atelier</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-primary fw-bolder fs-6" aria-current="page" (click)="showProposalModal($event)" href="#">Mes ateliers</a>
+        </li>
+        <li class="nav-item">
+          <div class="d-flex align-items-center">
+            <div [hidden]="inputSeConnecter">
+              <a class="nav-link active text-primary fw-bolder fs-6" aria-current="page" href="auth">Se connecter</a>
+            </div>
+            <div [hidden]="inputVisible">
+              <a class="nav-link active text-primary fw-bolder fs-6 btn bg-transparent" aria-current="page" (click)="logout()">Déconnexion</a>
+            </div>
+            <div [hidden]="inputVisible">
+              <button type="button" class="nav-link active text-primary fw-bolder fs-6" aria-current="page">
+                <span class="material-symbols-outlined text-center presta-mt-1">
+                  person
+                </span>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

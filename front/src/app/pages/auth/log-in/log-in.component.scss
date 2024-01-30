@@ -1,0 +1,13 @@
+.btn-quinary {
+    background-color: #e63757; 
+    color: #fff; 
+    border-color: #e63757; 
+  
+    &:hover,
+    &:focus {
+      background-color: #e63757; 
+      color: #fff; 
+      border-color: #e63757; 
+      box-shadow: none; 
+    }
+  }

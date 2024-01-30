@@ -1,0 +1,20 @@
+<!-- Formulaire de connexion -->
+<form class="text-center p-5" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+
+ 
+
+    <!-- Email -->
+    <div class="mb-5 pt-3">
+        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-5" placeholder="Adresse e-mail"
+        name="username" [(ngModel)]="model.username" #username="ngModel" required>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-5 pt-3">
+        <input type="password" id="defaultSubscriptionFormPassword" class="form-control mb-5" placeholder="Mot de passe"
+        name="password" [(ngModel)]="model.password" #password="ngModel" required>
+    </div>
+
+    <!-- Sign in button -->
+    <button class="btn btn-quinary btn-block text-tertiary" type="submit" [disabled]="!f.form.valid">Se connecter</button>
+</form>

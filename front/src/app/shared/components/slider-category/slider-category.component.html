@@ -1,0 +1,55 @@
+<div id="categorySliderDesktop" class="carousel slide d-none d-md-block">
+  <div class="carousel-inner">
+    <ng-container *ngFor="let category of categories; let i = index">
+      <div class="carousel-item {{ i === currentIndex ? 'active' : '' }}">
+        <div class="row justify-content-center position-relative">
+          <div class="col-12 col-md-6 col-lg-2 d-flex justify-content-center"
+            *ngFor="let categoryItem of categories.slice(i, i + 5)">
+           
+            <app-card-category [category]="categoryItem"></app-card-category>
+
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle p-0 h-25"
+    type="button" data-bs-target="#categorySliderDesktop" (click)="prevCategory()">
+    <span class="material-symbols-outlined">
+      arrow_back_ios
+    </span>
+  </button>
+
+  <button class="carousel-control-next position-absolute top-50 start-100 translate-middle p-0 h-25"
+    type="button" data-bs-target="#categorySliderDesktop" (click)="nextCategory()">
+    <span class="material-symbols-outlined">
+      arrow_forward_ios
+    </span>
+  </button>
+</div>
+
+<div id="categorySliderMobile" class="carousel slide d-block d-md-none">
+  <div class="carousel-inner">
+    <ng-container *ngFor="let category of categories; let i = index">
+      <div class="carousel-item {{ i === currentIndex ? 'active' : '' }}">
+        <div class="d-flex justify-content-center position-relative">
+
+          <app-card-category [category]="category"></app-card-category>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle p-0 h-25"
+    type="button" data-bs-target="#categorySliderMobile" (click)="prevCategory()">
+    <span class="material-symbols-outlined">
+      arrow_back_ios
+    </span>
+  </button>
+  <button class="carousel-control-next position-absolute top-50 start-100 translate-middle p-0 h-25"
+    type="button" data-bs-target="#categorySliderMobile" (click)="nextCategory()">
+    <span class="material-symbols-outlined">
+      arrow_forward_ios
+    </span>
+  </button>
+</div>

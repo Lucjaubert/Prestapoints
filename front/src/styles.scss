@@ -1,0 +1,42 @@
+
+
+//DEBUT SURCHARGE
+$theme-colors: (
+  "primary":          #22577A,
+  "secondary":        #38a3a5,
+  "tertiary":         #ffedeb,
+  "quaternary":       #F8F9F0,
+  "quinary":          #e63757,
+  "dark":             #001C46,
+  "gray-text":        #638096,
+  "background-grey":  #F5F7FA,
+  "background-grey-lighter": #F8F8F8,
+  "white-1":           #ffffff,
+  "accepted":         #4385F4,
+  "refund":           orange,
+  "success":         #60DAB1,
+  "info":            #66d1d1,
+  "warning":         #FFCC00,
+  "danger":          #FA393E,
+  "light":           #ececec,
+  "primary-muted":   #b1cfec,
+  "info-muted":      #7ee5e5,
+  "danger-muted":    #f77eb9,
+  "validate":        #60DAB1,
+  "line-table":      #BAC5DB,
+  "color-placeholder": #BAC5DB,
+  "border-gray":      #E8ECF4,
+  "text-muted":      #f6f7ff,
+  "background-primary": #EEF5FF,
+  "background-danger": #f9e9e9,
+  "mat-label":#7C879C, 
+  );
+//FIN SURCHARGE
+@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons.css';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Raleway', sans-serif;
+}

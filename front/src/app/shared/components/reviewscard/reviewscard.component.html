@@ -1,0 +1,45 @@
+<div class="container">
+  <section class="mt-11">
+    <div class="card testimonial-card d-flex justify-content-center">
+      <div class="avatar mx-auto bg-white">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+          class="rounded-circle img-fluid"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="mb-4 text-primary" style="font-size: 0.7rem">
+          <div
+            *ngFor="let registration of prestation?.registrations?.slice(0, 1)"
+          >
+            {{ registration?.user?.firstname }}<br />
+          </div>
+        </h4>
+
+        <h2 class="text-secondary mt-4" style="font-size: 0.8rem">
+          {{ prestation?.title }} à {{ prestation?.location?.city }}
+        </h2>
+
+        <hr />
+        <div class="comment-quote">
+          <p class="text-primary mt-4" style="font-size: 0.9rem">
+            <i class="fas fa-quote-left pe-2 "></i
+            ><em
+              *ngFor="
+                let registration of prestation?.registrations?.slice(0, 3)
+              " 
+              >{{ registration?.comment }}
+            </em>
+          </p>
+        </div>
+        <div class="stars mt-3 text-center">
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning p-6"></i>
+          <i class="bi bi-star-fill text-warning p-2"></i>
+          <i class="bi bi-star-fill text-warning p-6"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+        </div>        
+      </div>
+    </div>
+  </section>
+</div>

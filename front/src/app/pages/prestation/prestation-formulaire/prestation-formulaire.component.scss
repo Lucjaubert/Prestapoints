@@ -1,0 +1,28 @@
+@import "/src/styles/variables.scss";
+
+.container-details {
+    width: 80%;
+    text-align: left;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    min-height: 44vh;   
+}
+
+label{
+    font-weight: bold; 
+}
+
+.cardForm{
+    width: 80%;
+}
+
+.img-view {
+    max-height: 30vh;
+    max-width: 30vh;
+}
+
+.img-view-loading{
+    margin-left: 10vw;
+    max-height: 20vh;
+    max-width: 20vh;
+}

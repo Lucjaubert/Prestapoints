@@ -1,0 +1,94 @@
+<!-- Modal Edit User-->
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="userLabel">{{isNewUser ? "Ajout " : "Edition "}}d'un utilisateur</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!--FORM-->
+            <!--  form register -->
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center p-5">
+                <div class="form-row mb-4">
+                    <!-- First name -->
+                    <div class="mb-5 pt-3">
+                        <input type="text" id="userFormFirstName" class="form-control" placeholder="Prénom"
+                            formControlName="firstname">
+                        <div class="position-relative">
+                            <div *ngIf="userForm.controls['firstname'].errors && !userForm.controls['firstname'].pristine"
+                                class="position-absolute top-0 start-50 translate-middle-x w-100">
+                                <small [hidden]="!userForm.get('firstname')?.errors?.['required']"
+                                    class="text-danger">Le prénom est
+                                    requis
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Last name -->
+                    <div class="mb-5 pt-3">
+                        <input type="text" id="userFormLastName" class="form-control" placeholder="Nom"
+                            formControlName="lastname">
+                        <div class="position-relative">
+                            <div *ngIf="userForm.controls['lastname'].errors && !userForm.controls['lastname'].pristine"
+                                class="position-absolute top-0 start-50 translate-middle-x w-100">
+                                <small [hidden]="!userForm.get('lastname')?.errors?.['required']"
+                                    class="text-danger">Le nom
+                                    est requis</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="mb-5 pt-3">
+                        <input type="email" id="userFormEmail" class="form-control " placeholder="E-mail"
+                            formControlName="email"  >
+                        <div class="position-relative">
+                            <div *ngIf="userForm.controls['email'].errors && !userForm.controls['email'].pristine"
+                                class="position-absolute top-0 start-50 translate-middle-x w-100">
+                                {{ userForm.get('email')?.errors?.['email'].rules }}
+                                <small [hidden]="!userForm.get('email')?.errors?.['required']"
+                                    class="text-danger">L'e-mail est
+                                    requis
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roles -->
+                    <div class="mb-5 pt-3">
+                        <select class="form-select"  id="userFormRoles" formControlName="roles" multiple size="2"> 
+                            <ng-container *ngFor="let role of roles" >
+                                <option [value]="role.name" >{{role.slug}}</option>
+                            </ng-container>
+                          </select>
+                        <div class="position-relative">
+                            <small *ngIf="userForm.controls['roles'].errors && !userForm.controls['roles'].pristine"
+                                class="position-absolute top-0 start-50 translate-middle-x text-danger w-100">
+                                {{ userForm.get('roles')?.errors?.['roles'].rules }}
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Phone number -->
+                    <div class="mb-5 pt-3">
+                        <input type="tel" id="userFormPhone" class="form-control" placeholder="Téléphone"
+                            aria-describedby="userFormPhoneHelpBlock" formControlName="phone">
+                        <div class="position-relative">
+                            <small *ngIf="userForm.controls['phone'].errors && !userForm.controls['phone'].pristine"
+                                class="position-absolute top-0 start-50 translate-middle-x text-danger w-100">
+                                {{ userForm.get('phone')?.errors?.['phone'].rules }}
+                            </small>
+                        </div>
+                    </div>
+                    <!-- validation button -->
+                    <div class="modal-footer">
+                        <button class="btn my-2 btn-block btn-quinary text-tertiary" type="submit" data-bs-dismiss="modal"
+                            [disabled]="!userForm.valid">{{isNewUser ? "Ajouter" : "Modifier"}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

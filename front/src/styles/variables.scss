@@ -1,0 +1,177 @@
+$theme-colors: (
+  "primary": #22577a,
+  "secondary": #38a3a5,
+  "tertiary": #ffedeb,
+  "quaternary": #f8f9f0,
+  "quinary": #e63757,
+  "dark": #001c46,
+  "grey-text": #638096,
+  "grey-text-light":#a5adb3,
+  "background-grey": #faf6f0,
+  "white": #ffffff,
+  "accepted": #4385f4,
+  "refund": orange,
+  "success": #60dab1,
+  "info": #66d1d1,
+  "warning": #ffcc00,
+  "danger": #fa393e,
+  "mat-labe": #7c879c,
+);
+$border-size: (
+  "1": 1px,
+  "2": 2px,
+  "3": 3px,
+  "4": 4px,
+  "5": 5px,
+  "6": 6px,
+  "7": 7px,
+  "8": 8px,
+  "9": 9px,
+  "10": 10px,
+);
+$font-size: (
+  "10": 0.75rem,
+  // 12px
+  "20": 0.875rem,
+  // 14px
+  "30": 1rem,
+  // 16px
+  "40": 1.25rem,
+  // 20px
+  "50": 1.5rem,
+  // 24px
+  "60": 1.75rem,
+  // 28px
+  "70": 2rem // 32px,,,,,,,,,
+);
+
+$font-weight: (
+  "x-bold": 900,
+  "xx-bold": 700,
+  "bold": 600,
+  "medium": 500,
+  "regular": 400,
+  "light": 300,
+  "x-light": 200,
+);
+@each $name, $value in $font-size {
+  .presta-text-fs-#{$name} {
+    font-size: $value;
+  }
+}
+@each $name, $value in $font-weight {
+  .presta-text-fw-#{$name} {
+    font-weight: $value;
+  }
+}
+@each $name, $value in $theme-colors {
+  .presta-bg-#{$name} {
+    background-color: $value;
+  }
+  .presta-text-#{$name} {
+    color: $value;
+  }
+}
+$spacers: (
+  "0": 0rem,
+  // 0px
+  "1": 0.125rem,
+  // 2px
+  "2": 0.25rem,
+  // 4px
+  "3": 0.5rem,
+  // 8px
+  "4": 0.75rem,
+  // 12px
+  "5": 1rem,
+  // 16px
+  "6": 1.5rem,
+  // 24px
+  "7": 2rem,
+  // 32px
+  "8": 2.5rem,
+  // 40px
+  "9": 3.5rem,
+  // 56px
+  "10": 4rem,
+  // 64px
+  "11": 4.5rem,
+  // 72px
+  "12": 5rem,
+  // 80px
+  "13": 6rem,
+  // 96px
+  "14": 8rem,
+  // 128px
+  "15": 11rem,
+  // 176px
+  "16": 12rem,
+  // 192px
+  "17": 13rem,
+  // 208px
+  "18": 14rem,
+  // 224px
+  "19": 15rem,
+  // 240px
+  "20": 16rem,
+  // 256px
+  "21": 17rem // 272px,,,,,,,,,
+);
+@each $name, $value in $spacers {
+  .presta-p-#{$name} {
+    padding: $value;
+  }
+  .presta-pl-#{$name} {
+    padding-left: $value;
+  }
+  .presta-pr-#{$name} {
+    padding-right: $value;
+  }
+  .presta-pt-#{$name} {
+    padding-top: $value;
+  }
+  .presta-pb-#{$name} {
+    padding-bottom: $value;
+  }
+  .presta-px-#{$name} {
+    padding-right: $value;
+    padding-left: $value;
+  }
+  .presta-py-#{$name} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .presta-m-#{$name} {
+    margin: $value;
+  }
+  .presta-ml-#{$name} {
+    margin-left: $value;
+  }
+  .presta-mr-#{$name} {
+    margin-right: $value;
+  }
+  .presta-mt-#{$name} {
+    margin-top: $value;
+  }
+  .presta-mb-#{$name} {
+    margin-bottom: $value;
+  }
+  .presta-mx-#{$name} {
+    margin-right: $value;
+    margin-left: $value;
+  }
+  .presta-my-#{$name} {
+    margin-top: $value;
+    margin-bottom: $value;
+  } 
+}
+$icon-sizes: (
+  small: map-get($font-size, 10),
+  medium: map-get($font-size, 30),
+  large: map-get($font-size, 40),
+);
+@each $name, $value in $icon-sizes {
+  .presta-icon-#{$name} {
+    font-size: $value;
+  }
+} ;

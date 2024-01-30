@@ -1,0 +1,97 @@
+<!-- Default form register -->
+<form [formGroup]="signInForm" (ngSubmit)="onSubmitFormSignIn()" class="text-center p-5">
+
+    <div class="form-row mb-4">
+
+        <!-- First name -->
+        <div class="mb-5 pt-3">
+            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nom"
+                formControlName="firstname">
+            <div class="position-relative">
+                <div *ngIf="signInForm.controls['firstname'].errors && !signInForm.controls['firstname'].pristine"
+                    class="position-absolute top-0 start-50 translate-middle-x w-100">
+                    <small [hidden]="!signInForm.get('firstname')?.errors?.['required']" class="text-danger">Le nom est
+                        requis
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Last name -->
+        <div class="mb-5 pt-3">
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Prénom"
+                formControlName="lastname">
+            <div class="position-relative">
+                <div *ngIf="signInForm.controls['lastname'].errors && !signInForm.controls['lastname'].pristine"
+                    class="position-absolute top-0 start-50 translate-middle-x w-100">
+                    <small [hidden]="!signInForm.get('lastname')?.errors?.['required']" class="text-danger">Le prénom
+                        est requis</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- E-mail -->
+        <div class="mb-5 pt-3">
+            <input type="email" id="defaultRegisterFormEmail" class="form-control" placeholder="E-mail"
+                formControlName="email">
+            <div class="position-relative">
+                <div *ngIf="signInForm.controls['email'].errors && !signInForm.controls['email'].pristine"
+                    class="position-absolute top-0 start-50 translate-middle-x w-100">
+                    {{ signInForm.get('email')?.errors?.['email'].rules }}
+                    <small [hidden]="!signInForm.get('email')?.errors?.['required']" class="text-danger">L'e-mail est
+                        requis
+                    </small>
+                </div>
+            </div>
+        </div>
+        <!-- Password -->
+        <div *ngIf="passwordVisible">
+            <div class="mb-5 pt-3">
+                <input type="password" id="defaultRegisterFormPassword" class="form-control"
+                    placeholder="Minimum 8 caractères et un chiffre" formControlName="password">
+                <div class="position-relative">
+                    <small *ngIf="signInForm.controls['password'].errors && !signInForm.controls['password'].pristine"
+                        class="position-absolute top-0 start-50 translate-middle-x text-danger w-100">
+                        {{ signInForm.get('password')?.errors?.['password'].rules }}
+                    </small>
+                </div>
+            </div>
+
+            <!-- Password confirmation -->
+            <div class="mb-5 pt-3">
+                <input type="password" id="confirmRegisterFormPassword" class="form-control"
+                    placeholder="Tapez à nouveau votre mot de passe" formControlName="confirmPassword">
+                <div class="position-relative">
+                    <small *ngIf="signInForm.controls['password']?.errors && !signInForm.controls['password'].pristine"
+                        class="position-absolute top-0 start-50 translate-middle-x text-danger w-100">
+                        {{ signInForm.get('password')?.errors?.['password']?.rules }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        <!-- Phone number -->
+        <div class="mb-5 pt-3">
+            <input type="tel" id="defaultRegisterFormPhone" class="form-control" placeholder="Téléphone"
+                aria-describedby="defaultRegisterFormPhoneHelpBlock" formControlName="phone">
+            <div class="position-relative">
+                <small *ngIf="signInForm.controls['phone'].errors && !signInForm.controls['phone'].pristine"
+                    class="position-absolute top-0 start-50 translate-middle-x text-danger w-100">
+                    {{ signInForm.get('phone')?.errors?.['phone'].rules }}
+                </small>
+            </div>
+        </div>
+
+        <!--TODO probleme de numero avec ajout +33 -->
+        <!-- Sign up button -->
+        <button class="btn my-2 btn-block btn-quinary text-tertiary" type="submit"
+            [disabled]="!signInForm.valid">S'inscrire</button>
+
+        <!-- Terms of service -->
+        <div>
+            <small class="text-tertiary">En cliquant sur
+                <em>S'inscrire</em> vous acceptez nos
+                <a href="" target="_blank">conditions d'utilisation</a></small>
+        </div>
+    </div>
+</form>
+<!-- Default form register -->

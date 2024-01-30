@@ -1,0 +1,14 @@
+@import "/src/styles/variables.scss";
+
+.material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    font-size: 2em; 
+}
+
+.btn.btn-secondary {
+    background-color: map-get($theme-colors, "secondary")!important;
+}

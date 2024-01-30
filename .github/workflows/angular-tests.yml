@@ -1,0 +1,27 @@
+name: Angular Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js v18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install Angular CLI
+        run: cd front && npm install -g @angular/cli
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: front
+
+      - name: Build and launch angular test
+        run: ng build && ng test --watch=false
+        working-directory: front

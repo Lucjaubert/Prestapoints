@@ -1,0 +1,34 @@
+<div class="container presta-mt-md-10 mt-7">
+  <div class="category-details text-primary">
+    <div class="my-0 fw-0 presta-mt-4 text-md-left">
+      <h6>Découvrez les ateliers près de chez vous <i class="bi bi-arrow-right"></i></h6>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 col-md-12 my-0 fw-0 mt-4 text-md-left">
+        <h5>Ateliers liés à la catégorie "{{ selectedCategory.name }}"</h5>
+          <div class="col-12 d-none d-md-block">
+            <div class="d-flex">
+              <ng-container *ngFor="let prestation of prestations">
+                <div> 
+                  <app-card [prestation]="prestation"></app-card>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-12 d-block d-md-none">
+            <div id="swiperCustomMobile" class="carousel slide">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <ng-container *ngFor="let prestation of prestations">
+                    <div class="swiper-slide">
+                      <app-slider [prestationsApi]="prestations"></app-slider>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

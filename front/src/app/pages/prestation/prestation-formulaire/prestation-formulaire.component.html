@@ -1,0 +1,133 @@
+<body>
+<div class="container d-flex justify-content-center" *ngIf="isLoaded">
+    <div class="container-details presta-p-7 presta-my-9 shadow">
+
+            <span *ngIf="isFormulaireFalse" class = "mb-5 text-danger fw-bold"> Veuillez remplir tout les champs</span>
+            
+            <form [formGroup]="prestationFormBasic" *ngIf="pageNumber == 0"  (ngSubmit)="onSubmitBpNext(0)">
+                <h3>Généralités : </h3>
+                <div class="m-8">
+                    <label for="category" class="form-label">Catégories :</label>
+                    <select id = "category" class="form-select mb-6" aria-label="Default select example" formControlName="category">
+                        <option *ngFor="let categoryOption of categories; let i = index" [value]="categoryOption.id">{{categoryOption.name}}</option>
+                    </select>
+                </div>
+                <div class="m-8" *ngFor="let field of formFieldsBasic">
+                    <label [for]="field.name" class="form-label">{{ field.label }} :</label>
+                    <input type="{{ field.type }}" [id]="field.name" formControlName="{{ field.name }}" placeholder="{{ field.placeholder }}" class="form-control" />
+                    <div *ngIf="prestationFormBasic.get(field.name)?.errors && !prestationFormBasic.get(field.name)?.pristine"
+                        class="error-msg m-3 text-danger">
+                        <div [hidden]="!prestationFormBasic.get(field.name)?.errors?.['required']">
+                            cette donnée est obligatoire.
+                        </div>
+                        <div [hidden]="!prestationFormBasic.controls[field.name].invalid">
+                            {{ field.validationMessage }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn btn-primary m-3" type="submit" >Suivant</button>
+                </div> 
+            </form>
+
+            <form [formGroup]="prestationFormCharacteristic" *ngIf="pageNumber == 1" (ngSubmit)="onSubmitBpNext(1)">
+                <h3>Précisions :</h3>
+                <div class="m-8" *ngFor="let field of formFieldsCharacteristic">
+                    <label [for]="field.name" class="form-label">{{ field.label }} :</label>
+                    <input type="{{ field.type }}" [id]="field.name" formControlName="{{ field.name }}" placeholder="{{ field.placeholder }}" class="form-control" />
+                    <div *ngIf="prestationFormCharacteristic.get(field.name)?.errors && !prestationFormCharacteristic.get(field.name)?.pristine"
+                        class="error-msg m-3 text-danger">
+                        <div [hidden]="!prestationFormCharacteristic.get(field.name)?.errors?.['required']">
+                            cette donnée est obligatoire.
+                        </div>
+                        <div [hidden]="!prestationFormCharacteristic.controls[field.name].invalid">
+                            {{ field.validationMessage }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary m-3" (click)="onSubmitBpPrevious(1)">Précédent</button>
+                    <button class="btn btn-primary m-3" type="submit">Suivant</button>
+                </div>
+            </form>
+
+            <form [formGroup]="prestationFormDescription"  *ngIf="pageNumber == 2" (ngSubmit)="onSubmitBpNext(2)">
+                <h3>Medias représentant votre atelier</h3>
+                <div class="m-8" *ngFor="let field of formFieldsDescription">
+                    <label [for]="field.name" class="form-label">{{ field.label }} :</label>
+                    <input type="{{ field.type }}" [id]="field.name" formControlName="{{ field.name }}" placeholder="{{ field.placeholder }}" class="form-control" />
+                    <div *ngIf="prestationFormDescription.get(field.name)?.errors && !prestationFormDescription.get(field.name)?.pristine"
+                        class="error-msg m-3 text-danger">
+                        <div [hidden]="!prestationFormDescription.get(field.name)?.errors?.['required']">
+                            cette donnée est obligatoire.
+                        </div>
+                        <div [hidden]="!prestationFormDescription.controls[field.name].invalid">
+                            {{ field.validationMessage }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary m-3" (click)="onSubmitBpPrevious(2)">Précédent</button>
+                    <button class="btn btn-primary m-3" type="submit">Suivant</button>
+                </div>
+            </form>
+
+            <form [formGroup]="prestationFormLocation"  *ngIf="pageNumber == 3" (ngSubmit)="onSubmitBpNext(3)">
+                <h3>Descriptions représentant votre atelier</h3>
+                <div class="m-8" *ngFor="let field of formFieldsLocation">
+                    <label [for]="field.name" class="form-label">{{ field.label }} :</label>
+                    <input type="{{ field.type }}" [id]="field.name" formControlName="{{ field.name }}" placeholder="{{ field.placeholder }}" class="form-control" />
+                    <div *ngIf="prestationFormLocation.get(field.name)?.errors && !prestationFormLocation.get(field.name)?.pristine"
+                        class="error-msg m-3 text-danger">
+                        <div [hidden]="!prestationFormLocation.get(field.name)?.errors?.['required']">
+                            cette donnée est obligatoire.
+                        </div>
+                        <div [hidden]="!prestationFormLocation.controls[field.name].invalid">
+                            {{ field.validationMessage }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary m-3" (click)="onSubmitBpPrevious(3)">Précédent</button>
+                    <button class="btn btn-primary m-3" type="submit">Suivant</button>
+                </div>
+            </form>
+            
+            <form [formGroup]="prestationFormMedia"  *ngIf="pageNumber == 4" >
+                <h3>Medias représentant votre atelier</h3>
+                <div class="m-8">
+                    <label for="mediaVideo" class="form-label"> Veuillez renseigner un lien video : </label>
+                    <input type="text" id="mediaVideo" formControlName="mediaVideo" placeholder="https://..." class="form-control" />
+                    <div *ngIf="prestationFormMedia.get('mediaVideo')?.errors && !prestationFormMedia.get('mediaVideo')?.pristine"
+                        class="error-msg m-3 text-danger">
+                        <div [hidden]="!prestationFormMedia.get('mediaVideo')?.errors?.['required']">
+                            cette donnée est obligatoire.
+                        </div>
+                        <div [hidden]="!prestationFormMedia.controls['mediaVideo'].invalid">
+                            Le champs est limité à 255 caractères.
+                        </div>
+                    </div>
+                </div>
+                <div class="m-8">
+                    <label for="mediaImage" class="form-label"> Charger une image (obligatoire) : </label><br>
+                    <div class="m-3 d-flex flex-row align-items-center">
+                        <img class= "m-3" *ngIf="imageSrc" [src]="imageSrc" class="img-view" alt="Image">
+                        <div *ngIf="loading" class="loading-container">
+                            <img class="img-view-loading" src="assets/img/loading.webp" alt="Chargement en cours...">
+                        </div>
+                    </div>
+                    <div class="m-3 d-flex flex-row align-items-center">
+                        <input id="mediaImage" type="file" (change)="onFileSelected($event)">
+                    </div>
+                    <h6 class="m-3 text-danger">{{messageErreurImage}}</h6>
+                </div>
+
+                <div class="d-flex justify-content-end m-10">
+                    <button class="btn btn-primary m-3" (click)="onSubmitBpPrevious(4)">Précédent</button>
+                    <button *ngIf="isImageLoading" class="btn btn-primary m-3" (click)="onSubmit()">Enregistrer</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</body>

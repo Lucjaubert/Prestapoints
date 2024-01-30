@@ -1,0 +1,128 @@
+<h3 class="my-5">Liste des utilisateurs <p class="btn p-0 m-0 bg-transparent" (click)="showAddUserForm()"
+        data-bs-toggle="modal" data-bs-target="#userFormModal"><i
+            class="bi bi-person-fill-add ms-5 fs-3 text-secondary"></i></p>
+</h3>
+
+
+<table class="table table-striped table-hover mt-5 overflow-auto border">
+    <thead class="text-secondary">
+        <tr class="border">
+            <!-- trash -->
+            <th class="border" scope="col">
+                <p class="btn p-0 m-0 bg-transparent" (click)="deleteUsers()"><i
+                        class="bi bi-trash3-fill text-danger"></i></p>
+            </th>
+            <!-- firstname -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0" (click)="ascOrderUsersByProperty('firstname')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'firstname'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'firstname')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0" (click)="descOrderUsersByProperty('firstname')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'firstname'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'firstname')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Prénom</th>
+            <!-- lastname -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0" (click)="ascOrderUsersByProperty('lastname')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'lastname'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'lastname')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="descOrderUsersByProperty('lastname')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'lastname'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'lastname')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Nom</th>
+            <!-- email -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="ascOrderUsersByProperty('email')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'email'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'email')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="descOrderUsersByProperty('email')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'email'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'email')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Email</th>
+            <!-- creationDate -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="ascOrderUsersByProperty('creationDate')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'creationDate'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'creationDate')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0 text-warning"
+                        (click)="descOrderUsersByProperty('creationDate')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'creationDate'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'creationDate')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Date de création</th>
+            <!-- roles -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="ascOrderUsersByProperty('roles')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'roles'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'roles')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="descOrderUsersByProperty('roles')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'roles'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'roles')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Rôle(s)</th>
+            <!-- phone -->
+            <th class="border" scope="col"><span class="me-5 p-0">
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="ascOrderUsersByProperty('phone')"
+                        [class.text-primary]="isAscOrder && orderUsersByProperty === 'phone'"
+                        [class.text-warning]="!(isAscOrder && orderUsersByProperty === 'phone')">
+                        <i class="bi bi-caret-up-fill m-0 p-0 "></i>
+                    </p>
+                    <p class="btn bg-transparent m-0 p-0 text-warning" (click)="descOrderUsersByProperty('phone')"
+                        [class.text-primary]="!isAscOrder && orderUsersByProperty === 'phone'"
+                        [class.text-warning]="!(!isAscOrder && orderUsersByProperty === 'phone')">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                </span>Téléphone</th>
+            <th class="border" scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let user of users">
+            <tr>
+                <td class="border"><input type="checkbox" [value]="user"
+                        (change)="addToDeleteList($event.target, user)"></td>
+                <td class="border">{{user?.firstname}}</td>
+                <td class="border">{{user?.lastname}}</td>
+                <td class="border">{{user?.email}}</td>
+                <td class="border">{{user?.creationDate | date:'d MMMM yyyy' }}</td>
+                <td class="border"> <ng-container *ngFor="let role of user?.roles">{{role.slug}}, </ng-container></td>
+                <td class="border">{{user?.phone}}</td>
+                <td class="border">
+                    <div class="row">
+                        <p class="btn p-0 m-0 bg-transparent" (click)="showEditUserForm(user)" data-bs-toggle="modal"
+                            data-bs-target="#userFormModal"><i class="bi bi-pen-fill ms-2 me-3 text-secondary"></i></p>
+                        <p class="btn p-0 m-0 bg-transparent" (click)="detailUser(user)"><i
+                            class="bi bi-eye-fill me-3 text-info"></i></p>
+                        <p class="btn p-0 m-0 bg-transparent" (click)="deleteUser(user)"><i
+                            class="bi bi-trash3-fill me-2 text-danger"></i></p>
+                    </div>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+
+
+<!-- Modal User-->
+<div class="modal fade" id="userFormModal" tabindex="-1" aria-labelledby="userLabel" aria-hidden="true">
+    <app-userform [user]="user" [isNewUser]="isNewUser" (needToRefresh)="needToRefresh($event)"></app-userform>
+</div>

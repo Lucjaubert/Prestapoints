@@ -1,0 +1,9 @@
+  <div class="row">
+    <div class="col-lg-5 col-md-12">
+      <app-card-details-mini [prestation]="prestation"></app-card-details-mini>
+    </div>
+    <div class="col-lg-7 col-md-12">
+      <app-card-details-maxi [prestation]="prestation"></app-card-details-maxi>
+    </div>
+  </div>
+  <app-reservation [prestation]="prestation" (needToRefresh)="needToRefresh($event)"></app-reservation>

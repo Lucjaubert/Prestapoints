@@ -1,0 +1,30 @@
+@import "/src/styles/variables.scss";
+
+.material-symbols-outlined {
+    font-size: 2rem;
+    color: map-get($theme-colors, secondary);
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48;
+}
+
+#swiperCustomDesktop .carousel-control-prev,
+#swiperCustomDesktop .carousel-control-next,
+#swiperCustomMobile .carousel-control-prev,
+#swiperCustomMobile .carousel-control-next {
+    display: block;
+}
+
+#swiperCustomMobile .slider-mobile-md-none {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    max-height: calc(100vh - 150px);
+}
+
+#swiperCustomMobile .slider-mobile-md-none app-card {
+    margin: 5px 0;
+}

@@ -1,0 +1,56 @@
+version: "3.5"
+
+services:
+
+  # base de données de l'application
+  db:
+    container_name: app_${APP_ENV}_db
+    image: mysql:8.1.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=prestapoints
+      - MYSQL_USER=prestapoints
+      - MYSQL_PASSWORD=prestapoints
+      - MYSQL_DATABASE=prestapoints
+    volumes:
+      - prestapoints-db:/var/lib/mysql
+    networks:
+      - appinternals
+  back:
+    image: prestapoints-back:latest
+    depends_on:
+      - db
+    networks:
+      - appinternals
+
+  # frontend de l'application
+  front:
+    build: ./front
+    volumes:
+      - web-client-build:/app/build
+    environment:
+      - NODE_ENV=production  
+    tty: true
+  
+  # serveur web de façade qui va dispatcher les requêtes entre back et front (voir nginx.conf)
+  nginx:
+    image: nginx:1.21.3
+    depends_on:
+      - back
+      - front
+    restart: always
+    networks:
+      - appinternals
+    ports:
+      - ${GATEWAY_PORT:-8000}:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - web-client-build:/usr/share/nginx/html
+      - ./logs:/var/log/nginx
+volumes:
+  web-client-build:
+  prestapoints-db:
+    driver: local
+networks:
+  appinternals:
+    name: appinternals_local

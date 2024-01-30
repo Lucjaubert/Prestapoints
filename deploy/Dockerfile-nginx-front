@@ -1,0 +1,50 @@
+# # This needs to be run from repository's root
+
+
+# FROM node:18.16.1-alpine as compile
+
+# # create build dirs
+# RUN mkdir -p /app/build
+# WORKDIR /app/build
+
+# # copy sources and compile front
+# COPY front .
+# RUN apk --no-cache add python3
+# ENV PYTHON=/usr/bin/python3
+# RUN apk --no-cache add make 
+# RUN apk --no-cache add g++ 
+# RUN npm install
+# RUN npx ng build --configuration=production 
+
+# # change base image to embed only nginx and front files in resulting docker image
+# FROM nginx:1.21.3 as RUN
+
+# # copy our nginx configuration to container
+# COPY nginx.conf /etc/nginx
+
+# # copy compiled files from previous step
+# WORKDIR /usr/share/nginx/html
+# COPY --from=compile /app/build/dist/front/* ./
+
+FROM node:18.16.1-alpine as compile
+
+RUN mkdir -p /app/build
+WORKDIR /app/build
+
+COPY front .
+RUN apk --no-cache add python3
+ENV PYTHON=/usr/bin/python3
+RUN apk --no-cache add make 
+RUN apk --no-cache add g++ 
+RUN npm install
+
+# RUN npm audit fix --force
+
+RUN npx ng build --configuration=production
+
+FROM nginx:1.21.3 as RUN
+
+COPY nginx.conf /etc/nginx
+
+WORKDIR /usr/share/nginx/html
+COPY --from=compile /app/build/dist/front/* ./
